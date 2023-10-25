@@ -1,12 +1,21 @@
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class Main {
-    public double input;
-    public double input2;
+//    public double input;
+//    public double input2;
     public String input_Calc = "";
     public double holding_Calc = 0;
     public char operation = 'z';
     public JFrame f;
+    public JTextField output;
+    public JButton zero, one, two, three, four, five, six, seven, eight, nine;
+    public JButton addition, subtraction, multiplication, division;
+    public JButton clear, equals, flipped;
+    public boolean isNegative;
+    public JPanel centerPanel;
+    public JPanel rightPanel;
+
     public static void main(String[] args) {
         Main myMain;
         myMain= new Main();
@@ -15,35 +24,40 @@ public class Main {
     public Main(){
         setupGraphics();
     }
-    public String reverese(String in){
-
-        String backwords="";
-        char[] myChar = in.toCharArray();
-        for (int i = myChar.length - 1; i >= 0; i--) {
-            backwords= backwords+myChar[i];
-            //System.out.print(try1[i]);
-        }
-        return (backwords);
-    }
-    public double add(String in){
-        double sum = input + input2;
-        return sum;
-    }
-    public double subtract(String in){
-        double difference = input - input2;
-        return difference;
-    }
+//    public String reverese(String in){
+//
+//        String backwords="";
+//        char[] myChar = in.toCharArray();
+//        for (int i = myChar.length - 1; i >= 0; i--) {
+//            backwords= backwords+myChar[i];
+//            //System.out.print(try1[i]);
+//        }
+//        return (backwords);
+//    }
+//    public double add(String in){
+//        double sum = input + input2;
+//        return sum;
+//    }
+//    public double subtract(String in){
+//        double difference = input - input2;
+//        return difference;
+//    }
     public void setupGraphics(){
         f=new JFrame("Button Example");
+        isNegative = false;
+        f.setLayout(new BorderLayout());
+        centerPanel = new JPanel();
+        rightPanel = new JPanel();
+        output= new JTextField();
+
 //        JTextField input=new JTextField();
 //        input.setBounds(50,50, 150,20);
 //
 //        JTextField input2 = new JTextField();
 //        input2.setBounds(50,100,150,20);
 //
-        JTextField output=new JTextField();
-        output.setBounds(90,20, 120,50);
-//
+
+
 //        JButton b=new JButton("Add");
 //        b.setBounds(50,200,100,30);
 //        b.addActionListener(new ActionListener(){
@@ -68,88 +82,77 @@ public class Main {
 //
 //            }
 //        });
-        JButton zero=new JButton("0");
-        zero.setBounds(20,20,50,50);
+        zero=new JButton("0");
         zero.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "0";
                 output.setText(input_Calc);
             }
         });
-        JButton one=new JButton("1");
-        one.setBounds(20,90,50,50);
+        one=new JButton("1");
         one.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "1";
                 output.setText(input_Calc);
             }
         });
-        JButton two=new JButton("2");
-        two.setBounds(90,90,50,50);
+        two=new JButton("2");
         two.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "2";
                 output.setText(input_Calc);
             }
         });
-        JButton three=new JButton("3");
-        three.setBounds(160,90,50,50);
+        three=new JButton("3");
         three.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "3";
                 output.setText(input_Calc);
             }
         });
-        JButton four=new JButton("4");
-        four.setBounds(20,160,50,50);
+        four=new JButton("4");
         four.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "4";
                 output.setText(input_Calc);
             }
         });
-        JButton five=new JButton("5");
-        five.setBounds(90,160,50,50);
+        five=new JButton("5");
         five.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "5";
                 output.setText(input_Calc);
             }
         });
-        JButton six=new JButton("6");
-        six.setBounds(160,160,50,50);
+        six=new JButton("6");
         six.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "6";
                 output.setText(input_Calc);
             }
         });
-        JButton seven=new JButton("7");
-        seven.setBounds(20,230,50,50);
+        seven=new JButton("7");
         seven.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "7";
                 output.setText(input_Calc);
             }
         });
-        JButton eight=new JButton("8");
-        eight.setBounds(90,230,50,50);
+        eight=new JButton("8");
         eight.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "8";
                 output.setText(input_Calc);
             }
         });
-        JButton nine=new JButton("9");
-        nine.setBounds(160,230,50,50);
+        nine=new JButton("9");
         nine.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 input_Calc = input_Calc + "9";
                 output.setText(input_Calc);
             }
         });
-        JButton addition=new JButton("+");
-        addition.setBounds(230,20,50,50);
+        addition=new JButton("+");
         addition.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 holding_Calc = Double.parseDouble(input_Calc);
@@ -157,8 +160,7 @@ public class Main {
                 operation = 'a';
             }
         });
-        JButton subtraction=new JButton("-");
-        subtraction.setBounds(230,90,50,50);
+        subtraction=new JButton("-");
         subtraction.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 holding_Calc = Double.parseDouble(input_Calc);
@@ -166,8 +168,7 @@ public class Main {
                 operation = 's';
             }
         });
-        JButton multiplication=new JButton("*");
-        multiplication.setBounds(230,160,50,50);
+        multiplication=new JButton("*");
         multiplication.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 holding_Calc = Double.parseDouble(input_Calc);
@@ -175,8 +176,7 @@ public class Main {
                 operation = 'm';
             }
         });
-        JButton division=new JButton("/");
-        division.setBounds(230,230,50,50);
+        division=new JButton("/");
         division.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 holding_Calc = Double.parseDouble(input_Calc);
@@ -184,30 +184,98 @@ public class Main {
                 operation = 'd';
             }
         });
+        equals=new JButton("=");
+        equals.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(operation=='a'){
+                    holding_Calc += Double.parseDouble(input_Calc);
+                    output.setText(holding_Calc + "");
+                    input_Calc = holding_Calc + "";
+                }if(operation=='s'){
+                    holding_Calc -= Double.parseDouble(input_Calc);
+                    output.setText(holding_Calc + "");
+                    input_Calc = holding_Calc + "";
+                }if(operation=='m'){
+                    holding_Calc *= Double.parseDouble(input_Calc);
+                    output.setText(holding_Calc + "");
+                    input_Calc = holding_Calc + "";
+                }if(operation=='d'){
+                    holding_Calc /= Double.parseDouble(input_Calc);
+                    output.setText(holding_Calc + "");
+                    input_Calc = holding_Calc + "";
+                }
+            }
+        });
+        clear=new JButton("C");
+        clear.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                holding_Calc = 0;
+                input_Calc = "";
+                output.setText("");
+            }
+        });
+        flipped=new JButton("(-)");
+        flipped.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(isNegative == false){
+                    //makes positive number negative
+                    input_Calc = "-" + input_Calc;
+                    output.setText(input_Calc);
+                    isNegative = true;
+                }if(isNegative == true){
+                    //makes negative number positive
+                    input_Calc = input_Calc.substring(2);
+                    output.setText(input_Calc);
+                    isNegative = false;
+                }
+            }
+        });
 
-
-
-        f.add(addition);
-        f.add(subtraction);
-        f.add(multiplication);
-        f.add(division);
-        f.add(zero);
-        f.add(one);
-        f.add(two);
-        f.add(three);
-        f.add(four);
-        f.add(five);
-        f.add(six);
-        f.add(seven);
-        f.add(eight);
-        f.add(nine);
+        f.add(output,BorderLayout.NORTH);
+        centerPanel.setSize(400,400);
+        centerPanel.setLayout(new GridLayout(4,3));
+        centerPanel.add(one);
+        centerPanel.add(two);
+        centerPanel.add(three);
+        centerPanel.add(four);
+        centerPanel.add(five);
+        centerPanel.add(six);
+        centerPanel.add(seven);
+        centerPanel.add(eight);
+        centerPanel.add(nine);
+        centerPanel.add(zero);
+        centerPanel.add(clear);
+        centerPanel.add(flipped);
+        f.add(centerPanel,BorderLayout.CENTER);
+        rightPanel.setLayout(new GridLayout(5,1));
+        rightPanel.add(equals);
+        rightPanel.add(addition);
+        rightPanel.add(subtraction);
+        rightPanel.add(multiplication);
+        rightPanel.add(division);
+        f.add(rightPanel,BorderLayout.EAST);
+//        f.add(addition);
+//        f.add(subtraction);
+//        f.add(multiplication);
+//        f.add(division);
+//        f.add(equals);
+//        f.add(zero);
+//        f.add(one);
+//        f.add(two);
+//        f.add(three);
+//        f.add(four);
+//        f.add(five);
+//        f.add(six);
+//        f.add(seven);
+//        f.add(eight);
+//        f.add(nine);
         //f.add(b);
         //f.add(c);
         //f.add(input);
         //f.add(input2);
-        f.add(output);
+        //f.add(output);
         f.setSize(400,400);
-        f.setLayout(null);
+      //  f.setLayout(null);
         f.setVisible(true);
     }
 }  
